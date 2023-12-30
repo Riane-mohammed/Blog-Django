@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blog | {% block title %}{% endblock %}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'Blog/style.css' %}" />
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary fixed">
+            <div class="container-fluid fs-4 fixed">
+                <div class="collapse d-flex justify-content-center navbar-collapse fixed" id="navbarNav">
+                    <ul class="navbar-nav fw-bold fs-5 fixed">
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="">{{ request.user }}</a>
+                        </li> -->
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="{% url 'home' %}">HOME</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="{% url 'myPosts' %}">MY POSTS</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="{% url 'addPost' %}">ADD</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="{% url 'profile' %}">PROFILE</a>
+                        </li>
+                        {%  if user.is_authenticated %}
+                            <li class="nav-item mx-3">
+                                <a class="nav-link" href="{% url 'logout' %}">LOG OUT</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="d-flex justify-content-center ">
+            <div class="my-5">{% block content %}{% endblock %}</div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    </body>
+</html>

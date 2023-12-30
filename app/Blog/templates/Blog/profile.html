@@ -1,0 +1,26 @@
+{% extends 'Blog/base.html' %}
+{% load static %}
+{%block title%}{{ user.username }}{% endblock %}
+{% block content %}
+<!-- <h1>Home</h1> -->
+{% if user %}
+        <div class="profile">
+            <div>
+                <p class="ms-3"><span>First Name : </span>{{ user.first_name }}</p>
+                <p class="ms-3"><span>Last Name : </span>{{ user.last_name }}</p>
+                <p class="ms-3"><span>Username : </span>{{ user.username }}</p>
+            </div>
+            <div class="profileimage">
+                {% if user.profile %}
+                <img src="{{ user.profile.url }}" alt="Profile Picture">
+                {% else %}
+                <img src="{% static 'images/profile.png' %}" alt="Default Profile Picture">
+                {% endif %}
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'updateprofile' %}" class="btn btn-primary">Update Details</a>
+            <a href="{% url 'password' %}" class="btn btn-primary ms-3">Change Password</a>
+        </div>
+{% endif %}
+{% endblock %}

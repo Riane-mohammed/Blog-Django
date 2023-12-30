@@ -1,0 +1,17 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}
+Modify Post
+{% endblock %}
+
+{% block content %}
+<p class="fs-4 fw-bold text-center">Modify Post</h1>
+<form method="post" action="{% url 'updatePost' post.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Modify</button>
+        <a class="btn btn-primary" href="{% url 'myPosts' %}">Go back</a>
+    </div>
+</form>
+{% endblock %}

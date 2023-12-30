@@ -1,0 +1,32 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}
+Modify Post
+{% endblock %}
+
+{% block content %}
+<p class="fs-4 fw-bold text-center">Update Profile</p>
+<form class="text-start border p-3 rounded border-2" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.first_name.label_tag }} {{ form.first_name }}
+    {{ form.first_name.errors }}
+    <br>
+
+    {{ form.last_name.label_tag }} {{ form.last_name }}
+    {{ form.last_name.errors }}
+    <br>
+
+    {{ form.username.label_tag }} {{ form.username }}
+    {{ form.username.errors }}
+    <br>
+
+    {{ form.profile.label_tag }} {{ form.profile }}
+    {{ form.profile.errors }}
+    <br>
+
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Update</button>
+    </div>
+</form>
+{% endblock %}

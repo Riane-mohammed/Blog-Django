@@ -1,0 +1,33 @@
+{% extends 'Blog/base.html' %}
+{% load static %}
+{%block title%}Home{% endblock %}
+{% block content %}
+<!-- <h1>Home</h1> -->
+{% if posts %}
+<ul>
+    {% for post in posts %}
+    <li class="post">
+        <div class="d-flex mb-3">
+            <div class="image">
+                {% if post.writen_by.profile %}
+                <img src="{{ post.writen_by.profile.url }}" alt="Profile Picture">
+                {% else %}
+                <img src="{% static 'images/profile.png' %}" alt="Default Profile Picture">
+                {% endif %}
+            </div>
+            <p  class="fw-bold my-auto">{{post.writen_by}}</p>
+        </div>
+        <p class="ms-3">{{ post.description }}</p>
+        {% if post.image %}
+        <div class="postpic my-2">
+            <img src='{{ post.image.url }}' class="">
+        </div>
+        {% endif %}
+        <p class="fw-bold text-end">{{ post.created_at }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No posts found.</p>
+{% endif %}
+{% endblock %}

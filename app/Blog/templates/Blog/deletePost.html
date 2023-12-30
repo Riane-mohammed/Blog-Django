@@ -1,0 +1,16 @@
+{% extends 'Blog/base.html' %}
+
+{% block content %}
+<div class="text-center border border-danger border-2 rounded p-5 " style="min-width: 500px;">
+    <p class="fs-4 fw-bold text-center text-danger">Delete Post</p>
+    <p class="fw-bold text-center">are you sure u want delete </p> 
+    <p class="p-3 border rounded ">{{ post.description }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Delete">
+        <a class="btn btn-primary" href="{% url 'myPosts' %}">Go back</a>
+    </form>
+</div>
+{% endblock %}
+
+{% block title %}Delete Post{% endblock %}
